@@ -1,5 +1,6 @@
 import { useState } from "react";
 import UserInput from "./Components/UserInput";
+import Results from "./Components/Results";
 
 function App() {
   const [userInput, setUserInput] = useState({
@@ -18,25 +19,7 @@ function App() {
   return (
     <>
       <UserInput input={userInput} handleChange={handleUserInputChange} />
-
-      <table id="result">
-        <thead>
-          <tr>
-            <th>Year</th>
-            <th>Investment Value</th>
-            <th>Interest(Year)</th>
-            <th>Invested Capital</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>3456</td>
-            <td>567</td>
-            <td>34</td>
-            <td>1</td>
-          </tr>
-        </tbody>
-      </table>
+      <Results input={userInput} />
     </>
   );
 }
