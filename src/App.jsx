@@ -1,62 +1,81 @@
-function App() {
-  function handleInitialInvestmentChange(event) {
-    console.log(event.target.value);
-  }
+import { useState } from "react";
 
-  function handleAnnualInvestmentChange(event) {
-    console.log(event.target.value);
-  }
+function UserInput() {
+  const [userInput, setUserInput] = useState({
+    initialInvestment,
+    annualInvestment,
+    expectedReturn,
+    duration,
+  });
 
-  function handleExpectedReturnChange(event) {
-    console.log(event.target.value);
-  }
-
-  function handleDurationChange(event) {
-    console.log(event.target.value);
+  function handleUserInputChange(userInputID, newValue) {
+    setUserInput((prevUserInput) => {
+      return { ...prevUserInput, [userInputID]: newValue };
+    });
   }
 
   return (
+    <section id="user-input">
+      <div className="input-group">
+        <p>
+          <label htmlFor="initialInvestment">Initial Investment</label>
+          <input
+            type="number"
+            id="initialInvestment"
+            required
+            value={userInput.initialInvestment}
+            onChange={(event) =>
+              handleUserInputChange(initialInvestment, event.target.value)
+            }
+          />
+        </p>
+        <p>
+          <label htmlFor="annualInvestment">Annual Investment</label>
+          <input
+            type="number"
+            id="annualInvestment"
+            required
+            value={userInput.annualInvestment}
+            onChange={(event) =>
+              handleUserInputChange(annualInvestment, event.target.value)
+            }
+          />
+        </p>
+      </div>
+      <div className="input-group">
+        <p>
+          <label htmlFor="expectedReturn">Expected Return</label>
+          <input
+            type="number"
+            id="expectedReturn"
+            required
+            value={userInput.expectedReturn}
+            onChange={(event) =>
+              handleUserInputChange(expectedReturn, event.target.value)
+            }
+          />
+        </p>
+        <p>
+          <label htmlFor="duration">Duration</label>
+          <input
+            type="number"
+            id="duration"
+            required
+            value={userInput.duration}
+            onChange={(event) =>
+              handleUserInputChange(duration, event.target.value)
+            }
+          />
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function App() {
+  return (
     <>
-      <section id="user-input">
-        <div className="input-group">
-          <p>
-            <label htmlFor="initialInvestment">Initial Investment</label>
-            <input
-              type="number"
-              id="initialInvestment"
-              onChange={handleInitialInvestmentChange}
-            />
-          </p>
-
-          <p>
-            <label htmlFor="annualInvestment">Annual Investment</label>
-            <input
-              type="number"
-              id="annualInvestment"
-              onChange={handleAnnualInvestmentChange}
-            />
-          </p>
-        </div>
-        <div className="input-group">
-          <p>
-            <label htmlFor="expectedReturn">Expected Return</label>
-            <input
-              type="number"
-              id="expectedReturn"
-              onChange={handleExpectedReturnChange}
-            />
-          </p>
-
-          <p>
-            <label htmlFor="duration">Duration</label>
-            <input
-              type="number"
-              id="duration"
-              onChange={handleDurationChange}
-            />
-          </p>
-        </div>
-      </section>
+      <UserInput />
 
       <table id="result">
         <thead>
@@ -69,10 +88,10 @@ function App() {
         </thead>
         <tbody>
           <tr>
+            <td>3456</td>
+            <td>567</td>
+            <td>34</td>
             <td>1</td>
-            <td>45</td>
-            <td>566</td>
-            <td>6443</td>
           </tr>
         </tbody>
       </table>
