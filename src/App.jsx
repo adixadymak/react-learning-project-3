@@ -1,11 +1,12 @@
 import { useState } from "react";
+import UserInput from "./Components/UserInput";
 
-function UserInput() {
+function App() {
   const [userInput, setUserInput] = useState({
-    initialInvestment,
-    annualInvestment,
-    expectedReturn,
-    duration,
+    initialInvestment: 2000,
+    annualInvestment: 1500,
+    expectedReturn: 30000,
+    duration: 19,
   });
 
   function handleUserInputChange(userInputID, newValue) {
@@ -15,67 +16,8 @@ function UserInput() {
   }
 
   return (
-    <section id="user-input">
-      <div className="input-group">
-        <p>
-          <label htmlFor="initialInvestment">Initial Investment</label>
-          <input
-            type="number"
-            id="initialInvestment"
-            required
-            value={userInput.initialInvestment}
-            onChange={(event) =>
-              handleUserInputChange(initialInvestment, event.target.value)
-            }
-          />
-        </p>
-        <p>
-          <label htmlFor="annualInvestment">Annual Investment</label>
-          <input
-            type="number"
-            id="annualInvestment"
-            required
-            value={userInput.annualInvestment}
-            onChange={(event) =>
-              handleUserInputChange(annualInvestment, event.target.value)
-            }
-          />
-        </p>
-      </div>
-      <div className="input-group">
-        <p>
-          <label htmlFor="expectedReturn">Expected Return</label>
-          <input
-            type="number"
-            id="expectedReturn"
-            required
-            value={userInput.expectedReturn}
-            onChange={(event) =>
-              handleUserInputChange(expectedReturn, event.target.value)
-            }
-          />
-        </p>
-        <p>
-          <label htmlFor="duration">Duration</label>
-          <input
-            type="number"
-            id="duration"
-            required
-            value={userInput.duration}
-            onChange={(event) =>
-              handleUserInputChange(duration, event.target.value)
-            }
-          />
-        </p>
-      </div>
-    </section>
-  );
-}
-
-function App() {
-  return (
     <>
-      <UserInput />
+      <UserInput input={userInput} handleChange={handleUserInputChange} />
 
       <table id="result">
         <thead>
