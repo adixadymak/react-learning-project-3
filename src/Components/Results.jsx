@@ -6,7 +6,6 @@ export default function Results({ input }) {
     investmentResults[0].valueEndOfYear -
     investmentResults[0].interest -
     investmentResults[0].annualInvestment;
-  console.log(investmentResults);
 
   return (
     <table id="result">
